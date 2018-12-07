@@ -1,0 +1,205 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url("../images/duh\ .png");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+}
+/*#region slide*/
+.details h3{
+    color: #9BD788;
+    text-align: center;
+}
+.navbar-brand {
+    border: 1px color black;
+    background-color: red;
+    border-radius: 20px;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+
+
+}
+
+.card {
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    margin: 200px auto;
+   
+}
+
+   .swiper-container {
+            width: 100%;
+            padding-top: 200px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 380px;
+        }
+
+    
+
+        .swiper-slide .imgBx .image{
+            width: 100%;
+        }
+
+/*#endregion*/
+
+
+/*#region login*/
+.box{
+  display: none;       
+}
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    padding: 40px;
+    background-image: url("../images/wood.jpg");
+    background-size: cover;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+    text-align: center;
+}
+.box h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+.box .inputBox {
+    position: relative;
+}
+.box .inputBox input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid#fff;
+    outline: none;
+    background: transparent;
+    
+}
+.box .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
+    transition:  .5s;
+
+}
+
+button {
+
+    width: 117px;
+    font-size: 22px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label
+{
+    top: -18px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 12px;
+}
+.box input[type="submit"] {
+    /* background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: #60adde;
+
+    border-radius: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+/*#endregion*/
+
+/*#region form*/
+
+.wrap{
+    display: none;
+}
+
+.wrap {
+    max-width: 700px;
+    border-radius: 20px;
+    margin: auto;
+    background-image: url("../images/wood.jpg");
+    background-size: cover;
+    box-sizing: border-box;
+    padding: 40px;
+    color: #fff;
+    margin-top: 100px;
+}
+
+h2 {
+    text-align: center;
+}
+
+input[type=text], input[type=password], input[type=email]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0, 0, 0, 0.10);
+    outline: none;
+    border: none;
+    border-bottom: 1px  #fff;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+    
+}
+
+input[type=submit]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: #60adde;
+
+    border-radius: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+/*#endregion*/
