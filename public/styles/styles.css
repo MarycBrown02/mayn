@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url("../img/before-after-kitchens-02.jpg");
+    background: url("../images/before-after-kitchens-02.jpg");
   background-size: cover;
 
     
@@ -100,7 +100,7 @@ nav ul li a:hover {
         transform: translate(-50%, -50%);
         /* width: 700px; */
         padding: 40px;
-        background-image: url("../img/wood.jpg");
+        background-image: url("../images/wood.jpg");
         background-size: cover;
         box-sizing: border-box;
         box-shadow: 0 15px 25px rgba(0,0,0,.5);
@@ -132,7 +132,7 @@ label {
 section.sec1 {
     /* width: 100%;
     height: 100vh; */
-    background: url("../img/photo-1516865131505-4dabf2efc692.jpeg");
+    background: url("../images/photo-1516865131505-4dabf2efc692.jpeg");
     background-size: contain;
     height: 250px;
 
@@ -141,7 +141,7 @@ section.sec1 {
 section.sec2 {
     /* width: 100%;
     height: 100vh; */
-    background: url("../img/photo-1518779578993-ec3579fee39f.jpeg");
+    background: url("../images/photo-1518779578993-ec3579fee39f.jpeg");
      background-size: contain;
      height: 250px;
 
@@ -150,7 +150,7 @@ section.sec2 {
 section.sec3 {
     /* width: 100%;
     height: 100vh; */
-    background: url("../img/photo-1524859330668-c357331384f5.jpeg");
+    background: url("../images/photo-1524859330668-c357331384f5.jpeg");
      background-size: contain;
      height: 250px;
 
@@ -159,7 +159,7 @@ section.sec3 {
 section.sec4 {
     /* width: 100%;
     height: 100vh; */
-    background: url("../img/photo-1526318896980-cf78c088247c.jpeg");
+    background: url("../images/photo-1526318896980-cf78c088247c.jpeg");
      background-size: contain;
      height: 250px;
 
