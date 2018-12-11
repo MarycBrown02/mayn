@@ -5,19 +5,7 @@ var express = require("express");
 
 var router = express.Router();
 
-router.post("/api/addFavorite", function (req, res) {
-  // TODO: Insert into db
-  // this route recieves:
-  console.log("adding fav: " + req.body.name);
-  console.log("adding fav for: " + req.session.user.email);
 
-  req.body["UserId"] = req.session.user.id;
-  console.log("userid: " + req.body.UserId);
-
-  db.Favorite.create(req.body).error(function (err) {
-    console.log(err);
-  });
-});
 
 router.post("/api/login", function (req, res) {
 
@@ -48,10 +36,23 @@ router.post("/api/login", function (req, res) {
   });
 });
 
+router.get("/api/logout", function (req, res) {
+  console.log("Ending session for: " + req.session.user.email);
+  req.session.destroy();
+  res.json({success: true});
+ 
+});
+
+
 router.post("/api/register", function (req, res) {
   db.User.find({ where: { email: req.body.email } }).then(function (user) {
     if (!user) {
-      db.User.create(req.body).error(function (err) {
+      db.User.create(req.body).then(function(newUser){
+        console.log("**** Registered user: " + newUser.email);
+        req.session.user = newUser;
+        req.session.save();
+        res.json({ success: true, failureMessage: "" });
+      }).error(function (err) {
         console.log(err);
       });
       // passport.authenticate("local"),
@@ -63,9 +64,7 @@ router.post("/api/register", function (req, res) {
       //       success: true,
       //       failureMessage: ""
       //     };
-      req.session.user = user;
-      req.session.save();
-      res.json({ success: true, failureMessage: "" });
+      
     } else {
       var resp = {
         success: false,
@@ -81,8 +80,20 @@ router.post("/api/register", function (req, res) {
   //   success: true | false,
   //   failureMessage: <string>
   // }
+});
 
+router.post("/api/addFavorite", function (req, res) {
+  // TODO: Insert into db
+  // this route recieves:
+  console.log("adding fav: " + req.body.name);
+  console.log("adding fav for: " + req.session.user.email);
 
+  req.body["UserId"] = req.session.user.id;
+  console.log("userid: " + req.body.UserId);
+
+  db.Favorite.create(req.body).error(function(err) {
+    console.log(err);
+  });
 });
 
 router.get("/api/getFavorites", function (req, res) {

@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // loads meal.html
   app.get("/meal", function(req, res) {
-    res.render("meal");
+    res.render("meal", {name: req.session.user.firstName});
   });
 };
 
