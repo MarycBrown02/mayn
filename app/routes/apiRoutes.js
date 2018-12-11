@@ -1,4 +1,5 @@
 var db = require("../models");
+
 var passport = require("passport");
 
 var express = require("express");
