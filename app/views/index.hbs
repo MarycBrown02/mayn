@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="styles/swiper.min.css">
+    <link rel="stylesheet" href="styles/cook.css">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MAYNBDISH!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+            <div class="dropdown">
+                <button type="button" id="signIn" class="btn btn-outline-primary">Sign In</button>
+                <button type="button" id="register" class="btn btn-outline-primary">Register</button>
+
+            </div>
+
+
+        </div>
+    </nav>
+
+    <div class="box">
+        <h2>Login</h2>
+        <form id="login">
+            <div class="inputBox">
+                <input id="userName" type="text" name="user" required minlength="5">
+                <label>Email</label>
+            </div>
+            <div class="inputBox">
+                <input id="userPassword" type="password" maxlength="12" name="password" required minlength="5">
+                <label>Password</label>
+            </div>
+            <!-- <input id="logButton" type="submit" value=SUBMIT> -->
+            <button id="logButton" type="button" class="btn btn-primary">Log In</button>
+        </form>
+    </div>
+
+
+    <div class="wrap">
+        <h2>Sign Up Here</h2>
+        <div id="invalid" class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+        </div>
+        <form id=formRegister>
+
+            <input id="firstName" type="text" placeholder="First Name" name="fname" required>
+            <input id="lastName" type="text" placeholder="Last Name" name="lname" required>
+            <input id="email" type="email" placeholder="Email" name="email" required email>
+            <input id="password" type="password" placeholder="Password  6 characters minimum" name="password" minlength="6"
+                required>
+            <input id="retype" type="password" placeholder="Re-Type Password" name="re_password" minlength="6" required>
+            <button id="regButton" type="button" class="btn btn-primary">Primary</button>
+
+
+        </form>
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">blach blach</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>NAME
+                        <br>
+                        <span>RECIPE</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="js/index.js"></script>
+    <script src="js/swiper.min.js"></script>
+
+
+
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+        $("#signIn").on("click", () => {
+            $(".box").show();
+            $(".card").hide();
+            $(".swiper-container").hide();
+            $(".wrap").hide();
+        });
+
+        $("#register").on("click", () => {
+            $(".wrap").show();
+            $(".card").hide();
+            $(".swiper-container").hide();
+            $(".box").hide();
+
+        });
+
+
+
+
+
+        $("#logButton").on("click", function (event) {
+
+            event.preventDefault();
+
+            // TODO: make sure both fields filled in, if not show error
+            // TODO: add span to show error messages.
+
+            var login = {
+                email: $("#userName").val().trim(),
+                password: $("#userPassword").val().trim()
+            };
+
+
+            $.ajax("/api/login", {
+                type: "POST",
+                data: login
+            }).then(
+                function (response) {
+                    if (response.success) {
+                        location.href = "/meal";
+                    } else {
+                        // show response.failureMessage
+                        // clear input
+                        alert(response.failureMessage);
+                    }
+
+                    //location.reload();
+                }
+            );
+        });
+
+        $("#regButton").on("click", function (event) {
+
+            event.preventDefault();
+
+
+            //TODO: make sure the passwords match, if not show message and don't submit.
+            // TODO: make sure all fields are filled out, if not don't submit
+            //TODO: create span to show messages.
+
+            var register = {
+                firstName: $("#firstName").val().trim(),
+                lastName: $("#lastName").val().trim(),
+                email: $("#email").val().trim(),
+                password: $("#password").val().trim()
+            };
+
+            password2 = $("#retype").val().trim();
+
+            if (register.firstName.length < 1 ||
+                register.lastName.length < 1 ||
+                register.email.length < 1 ||
+                register.password.length < 1 ||
+                password2.length < 1) {
+                $("#invalid").show();
+                $("#invalid").text("Please complete the form");
+                return;
+            } else if (register.password !== password2) {
+                $("#invalid").text("Passwords do not match");
+                $("#password").val("");
+                $("#retype").val("");
+                $("#invalid").show();
+                return;
+            };
+
+            $.ajax("/api/register", {
+                type: "POST",
+                data: register
+            }).done(
+                function (response) {
+                    if (response.success) {
+                        location.href = "/meal";
+                    } else {
+                        alert(response.failureMessage);
+                    }
+                    //location.reload();
+                }
+            ).fail(function() {
+                alert("fail");
+            });
+        });
+    </script>
+</body>
+
+</html>

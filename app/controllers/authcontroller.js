@@ -8,8 +8,8 @@ exports.signup = function (req, res) {
 }
 
 exports.signin = function (req, res) {
-
-    res.render("signin");
+    console.log("signin");
+    res.render("signin", null);
 
 }
 
