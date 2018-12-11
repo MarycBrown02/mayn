@@ -10,8 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../public/styles/swiper.min.css">
-    <link rel="stylesheet" href="../public/styles/cook.css">
+
+    <link rel="stylesheet" type="text/css" href="styles/swiper.min.css">
+    <link rel="stylesheet" href="styles/cook.css">
 
 
 </head>
@@ -25,11 +26,11 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           
+
 
             <div class="dropdown">
-                <button type="button" id="s" class="btn btn-outline-primary">Sign In</button>
-                <button type="button" id="r" class="btn btn-outline-primary">Register</button>
+                <button type="button" id="signIn" class="btn btn-outline-primary">Sign In</button>
+                <button type="button" id="register" class="btn btn-outline-primary">Register</button>
 
             </div>
 
@@ -41,30 +42,37 @@
         <h2>Login</h2>
         <form id="login">
             <div class="inputBox">
-                <input type="text" name="" required="required">
-                <label>Username</label>
+                <input id="userName" type="text" name="user" required minlength="5">
+                <label>Email</label>
             </div>
             <div class="inputBox">
-                <input type="password" name="" required="required">
+                <input id="userPassword" type="password" maxlength="12" name="password" required minlength="5">
                 <label>Password</label>
             </div>
-            <input type="submit" value=SUBMIT>
+            <!-- <input id="logButton" type="submit" value=SUBMIT> -->
+            <button id="logButton" type="button" class="btn btn-primary">Log In</button>
         </form>
     </div>
 
 
     <div class="wrap">
         <h2>Sign Up Here</h2>
-        <form id="register">
+        <div id="invalid" class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+        </div>
+        <form id=formRegister>
 
-            <input type="text" placeholder="First Name" name="fname" required>
-            <input type="text" placeholder="Last Name" name="lname" required>
-            <input type="email" placeholder="Email" name="email" required>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password  6 characters minimum" name="password" minlength="6" required>
-            <input type="password" placeholder="Re-Type Password" name="re_password" minlength="6" required>
-            <input type="submit" value=REGISTER>
+            <input id="firstName" type="text" placeholder="First Name" name="fname" required>
+            <input id="lastName" type="text" placeholder="Last Name" name="lname" required>
+            <input id="email" type="email" placeholder="Email" name="email" required email>
+            <input id="password" type="password" placeholder="Password  6 characters minimum" name="password" minlength="6"
+                required>
+            <input id="retype" type="password" placeholder="Re-Type Password" name="re_password" minlength="6" required>
+            <button id="regButton" type="button" class="btn btn-primary">Primary</button>
+
+
         </form>
+
     </div>
 
 
@@ -204,8 +212,9 @@
     </div>
 
     <!-- Swiper JS -->
-    <script src="../public/js/index.js"></script>
-    <script src="../public/js/swiper.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/swiper.min.js"></script>
+
 
 
 
@@ -226,6 +235,107 @@
             pagination: {
                 el: '.swiper-pagination',
             },
+        });
+
+        $("#signIn").on("click", () => {
+            $(".box").show();
+            $(".card").hide();
+            $(".swiper-container").hide();
+            $(".wrap").hide();
+        });
+
+        $("#register").on("click", () => {
+            $(".wrap").show();
+            $(".card").hide();
+            $(".swiper-container").hide();
+            $(".box").hide();
+
+        });
+
+
+
+
+
+        $("#logButton").on("click", function (event) {
+
+            event.preventDefault();
+
+            // TODO: make sure both fields filled in, if not show error
+            // TODO: add span to show error messages.
+
+            var login = {
+                email: $("#userName").val().trim(),
+                password: $("#userPassword").val().trim()
+            };
+
+
+            $.ajax("/api/login", {
+                type: "POST",
+                data: login
+            }).then(
+                function (response) {
+                    if (response.success) {
+                        location.href = "/meal";
+                    } else {
+                        // show response.failureMessage
+                        // clear input
+                        alert(response.failureMessage);
+                    }
+
+                    //location.reload();
+                }
+            );
+        });
+
+        $("#regButton").on("click", function (event) {
+
+            event.preventDefault();
+
+
+            //TODO: make sure the passwords match, if not show message and don't submit.
+            // TODO: make sure all fields are filled out, if not don't submit
+            //TODO: create span to show messages.
+
+            var register = {
+                firstName: $("#firstName").val().trim(),
+                lastName: $("#lastName").val().trim(),
+                email: $("#email").val().trim(),
+                password: $("#password").val().trim()
+            };
+
+            password2 = $("#retype").val().trim();
+
+            if (register.firstName.length < 1 ||
+                register.lastName.length < 1 ||
+                register.email.length < 1 ||
+                register.password.length < 1 ||
+                password2.length < 1) {
+                $("#invalid").show();
+                $("#invalid").text("Please complete the form");
+                return;
+            } else if (register.password !== password2) {
+                $("#invalid").text("Passwords do not match");
+                $("#password").val("");
+                $("#retype").val("");
+                $("#invalid").show();
+                return;
+            };
+
+            $.ajax("/api/register", {
+                type: "POST",
+                data: register
+            }).done(
+                function (response) {
+                    if (response.success) {
+                        location.href = "/meal";
+                    } else {
+                        alert(response.failureMessage);
+                    }
+                    //location.reload();
+                }
+            ).fail(function() {
+                alert("fail");
+            });
         });
     </script>
 </body>
