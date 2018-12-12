@@ -129,6 +129,48 @@ router.get("/api/getFavorites", function (req, res) {
   // res.json(data);
 });
 
+router.get("/api/getMeals", function (req, res) {
+  console.log("getting favs for user: " + req.session.uname);
+
+  // TODO: get the favorites from the database for this user and return them.
+
+  db.Meals.findAll({
+    where: {
+      UserId: req.session.user.id
+    }
+  }).then(function(dbMeals) {
+    res.json(dbMeals);
+  });
+
+});
+
+router.post("/api/updateMeals", function(req, res) {
+
+  db.Meals.find({where: {UserId: req.session.user.id}}).then(function(dbMeals){
+    if(dbMeals) {
+      db.Meals.update(req.body,
+        {
+          where: {
+            UserId: req.session.user.id
+          }
+        })
+        .then(function(dbPost) {
+          res.json({success: true, failureMessage: ""});
+        });
+    } else {
+      req.body["UserId"] = req.session.user.id;
+      db.Meals.create(req.body).then(function(dbMeals) {
+        res.json({success: true, failureMessage: ""});
+      }).error(function(err) {
+        console.log(err);
+        res.json({success: false, failureMessage: err});
+      });
+    }
+  });
+});
+
+
+
 
 
 module.exports = router;

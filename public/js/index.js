@@ -42,6 +42,17 @@ $("#viewProfile").on("click", () => {
 
 });
 
+
+function logout() {
+    $.ajax("/api/logout", {
+        type: "GET"
+    }).then(
+        function () {
+            location.href = "/";
+        }
+    );
+};
+
 $("#search").on("click", () => {
     $("#nene").hide();
     var term = $("#searchTerm").val().trim();
@@ -130,7 +141,7 @@ $("#fav").on("click", () => {
         type: "GET"
     }).then(
         function (result) {
-            for(i=0; i < result.length; i++){
+            for (i = 0; i < result.length; i++) {
                 var img = $("<img>");
                 img.attr("src", result[i].img);
                 $("#favRecipe").append(img);
@@ -143,9 +154,18 @@ $("#fav").on("click", () => {
                 var viewButton = $("<button>");
                 viewButton.addClass("viewbutton");
                 viewButton.text("View Recipe");
-                viewButton.attr("onClick", "window.open('" + result[1].link + "', 'favorite');");
+                viewButton.attr("onClick", "window.open('" + result[1].recipelink + "', 'recipe');");
                 $("#favRecipe").append(viewButton);
-                $("#favRecipe").append("<br> <hr>");
+                $("#favRecipe").append("<br>");
+
+            
+
+                var addMeal = $("<button>");
+                addMeal.addClass("addmeal");
+                addMeal.text("Add To Meal Plan");
+                $("#favRecipe").append(addMeal);
+                $("#favRecipe").append("<br>");
+                $("#favRecipe").append("<br>", "<hr>");
             }
         }
     );
@@ -177,3 +197,11 @@ function favClick() {
     );
 
 }
+
+$(document).on("click", ".btn", function(){
+    var id = $(this).attr("id");
+    alert(id);
+    var spn = "#" + id + "_span";
+    alert(spn);
+    $(spn).text("hey");
+});

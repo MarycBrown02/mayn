@@ -57,7 +57,7 @@
 
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                    <button id="viewProfile" type="button" class="btn btn-primary">View Profile</button>
+                    <button id="viewProfile" type="button" class="btn btn-primary">View Meal Plan</button>
 
                 </div>
             </div>
@@ -67,47 +67,6 @@
 
     </div>
     <br>
-    <div class="addRecipe">
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Recipe Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" required>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select Type of Recipe</label>
-                    <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Vegetables</option>
-                        <option>Meat</option>
-                        <option>Soup</option>
-                        <option>Salad</option>
-                        <option>Pasta</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Ingredients And Procedure</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" required></textarea>
-                </div>
-
-                <label for="exampleFormControlFile1">Recipe Photo</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
-                <button id="submitMeal" type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-    </div>
-
-
-    <div id="mealpic" class="card">
-
-        <br>
-        <div id="bee">
-            <button id="bone" type="button" class="btn btn-primary">Add Recipe Here</button>
-        </div>
-        <br>
-
-
-
-
-
-    </div>
 
 
 
@@ -117,26 +76,94 @@
                 <div id="nene" class="row">
 
                     <div class="col">
-                        <h1>
-                            <span>Name</span>
-                        </h1>
-                        <button type="button" class="btn btn-primary">Create Meal Plan</button>
-                        <div id="mealPlan">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, numquam! Dolorum, commodi.
-                            Veniam, harum, aut tenetur aliquid ducimus, laudantium eos quidem possimus est dolorem in
-                            fugiat! Commodi eos soluta voluptate.
-                            <button type="button" class="btn btn-primary">Add to Meal Plan</button>
 
-                        </div>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">View Meal Plan</button>
-                        <div id="viewPlan">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, ipsam qui doloremque
-                            repellendus repellat dicta dolorem in rerum ex, voluptatibus facilis ab nostrum laborum
-                            dolore tempore magnam suscipit consectetur perferendis!
-                            <button type="button" class="btn btn-primary">Primary</button>
-                        </div>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th scope="col"><button id="day1" type="button" class="btn btn-success">Monday</button></th>
+                                    <th scope="col"><button type="button" class="btn btn-success">Tuesday</button></th>
+                                    <th scope="col"><button type="button" class="btn btn-success">Wednesday</button></th>
+                                    <th scope="col"><button type="button" class="btn btn-success">Thursday</button></th>
+                                    <th scope="col"><button type="button" class="btn btn-success">Friday</button></th>
+                                    <th scope="col"><button type="button" class="btn btn-success">Saturday</button></th>
+                                    <th scope="col"><button type="button" class="btn btn-success">Sunday</button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span id="day1_b_span"></span><br>
+                                        <button id="day1_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <span id="day1_l_span"></span><br>
+                                        <button id="day1_l" type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <span id="day1_d_span"></span><br>
+                                        <button id="day1_d" type="button" class="btn btn-danger">dinner</button><br><br>
+
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <button type="button" class="btn btn-danger">dinner</button><br><br>
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <button type="button" class="btn btn-danger">dinner</button><br><br>
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <button type="button" class="btn btn-danger">dinner</button><br><br>
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <button type="button" class="btn btn-danger">dinner</button><br><br>
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <button type="button" class="btn btn-danger">dinner</button><br><br>
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    <th scope="row">
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br><br>
+                                        <button type="button" class="btn btn-danger">dinner</button><br><br>
+                                        <button type="button" class="btn btn-warning">Empty</button>
+                                    </th>
+                                    {{!-- <td>
+                                        <button type="button" class="btn btn-danger">Breakfast</button><br>
+                                        <button type="button" class="btn btn-danger">lunch</button><br>
+                                        <button type="button" class="btn btn-danger">dinner</button>
+                                    </td>
+                                    <td>b</td>
+                                    <td>c</td>
+                                    <td>d</td>
+                                    <td>e</td>
+                                    <td>f</td>
+                                    <td>g</td> --}}
+                                </tr>
+                                {{!-- <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr> --}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="row">
@@ -146,12 +173,13 @@
                     <br>
                 </div>
 
-                <div id="search-box">
+                {{!-- <div id="search-box">
                     <input id="searchTerm" class="search-text" type="text" name="" placeholder="Search Recipe Here">
                     <button id="search" type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-                </div>
-       
+                </div> --}}
+
                 <div id="rise" class="row">
+                    <button type="button" class="btn btn-info">close</button>
                     <div id="recipeSearch" class="col-6">
 
                     </div>
@@ -162,7 +190,13 @@
 
             </div>
             <br>
-            <div class="row">
+
+            <div id="search-box">
+                <input id="searchTerm" class="search-text" type="text" name="" placeholder="Search Recipe Here">
+                <button id="search" type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+
+            {{!-- <div class="row">
                 <div class="col">
                     <h2>Grocery List</h2>
 
@@ -174,7 +208,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col">
@@ -185,9 +219,12 @@
 
                     <div id="hiddenFav" class="card">
                         <div class="row">
-                            <div id="favRecipe" class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-                                
+                            <div id="favRecipe" class="col-6">
+                                <p>hello</p>
                             </div>
+                            {{!-- <div id="ingredient" class="col-6">
+                                <p>why</p>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -200,18 +237,8 @@
     </div>
 
 
-    <div class="card">
 
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
-
-<script src="js/index.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 
