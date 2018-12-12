@@ -55,9 +55,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Welcome <span>{{name}}</span></h5>
 
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <button id="viewProfile" type="button" class="btn btn-primary">View Meal Plan</button>
+                    {{!-- <p class="card-text">
+
+                    </p> --}}
+                      <div id="search-box">
+                <input id="searchTerm" class="search-text" type="text" name="" placeholder="Search Recipe Here">
+                <button id="search" type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+                    {{!-- <button id="viewProfile" type="button" class="btn btn-primary">View Meal Plan</button> --}}
 
                 </div>
             </div>
@@ -179,7 +184,7 @@
                 </div> --}}
 
                 <div id="rise" class="row">
-                    <button type="button" class="btn btn-info">close</button>
+                    {{!-- <button type="button" class="btn btn-info">close</button> --}}
                     <div id="recipeSearch" class="col-6">
 
                     </div>
@@ -191,16 +196,16 @@
             </div>
             <br>
 
-            <div id="search-box">
+            {{!-- <div id="search-box">
                 <input id="searchTerm" class="search-text" type="text" name="" placeholder="Search Recipe Here">
                 <button id="search" type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-            </div>
+            </div> --}}
 
-            {{!-- <div class="row">
+            <div class="row">
                 <div class="col">
                     <h2>Grocery List</h2>
 
-                    <button type="button" class="btn btn-primary">Add to Grocery List</button>
+                    <button id="grocery" type="button" class="btn btn-primary">View Grocery List</button>
 
 
                     <div id="moreRecipe" class="card">
@@ -208,7 +213,7 @@
                     </div>
 
                 </div>
-            </div> --}}
+            </div>
 
             <div class="row">
                 <div class="col">
