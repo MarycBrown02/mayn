@@ -130,7 +130,7 @@ router.get("/api/getFavorites", function (req, res) {
 });
 
 router.get("/api/getMeals", function (req, res) {
-  console.log("getting favs for user: " + req.session.uname);
+  console.log("getting favs for user: " + req.session.email);
 
   // TODO: get the favorites from the database for this user and return them.
 
@@ -155,15 +155,16 @@ router.post("/api/updateMeals", function(req, res) {
           }
         })
         .then(function(dbPost) {
-          res.json({success: true, failureMessage: ""});
+          res.json(dbMeals);
         });
     } else {
+      // add user id to the body of request so we can pass to model object for insert
       req.body["UserId"] = req.session.user.id;
       db.Meals.create(req.body).then(function(dbMeals) {
         res.json({success: true, failureMessage: ""});
       }).error(function(err) {
         console.log(err);
-        res.json({success: false, failureMessage: err});
+        res.json(dbMeals);
       });
     }
   });
