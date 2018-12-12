@@ -7,7 +7,7 @@ module.exports = function(sequelize, Sequelize) {
         day1_d: { type: Sequelize.STRING, allowNull: true },
         day2_b: { type: Sequelize.STRING, allowNull: true },
         day2_l: { type: Sequelize.STRING, allowNull: true },
-        day2__d: { type: Sequelize.STRING, allowNull: true },
+        day2_d: { type: Sequelize.STRING, allowNull: true },
         day3_b: { type: Sequelize.STRING, allowNull: true },
         day3_l: { type: Sequelize.STRING, allowNull: true },
         day3_d: { type: Sequelize.STRING, allowNull: true },

@@ -185,14 +185,37 @@ a {
 
 #recipeSearch{
     text-align: center;
+  
    
  
 }
 
 #ingredient {
     text-align: center;
-   
+  
     
 }
 
 
+p {
+    display: block;
+   text-align: center;
+}
+
+div.divide {
+    vertical-align: top;
+    display: inline-block;
+    border:2px solid #231858;
+    /* height: 418px; */
+    /* width: 350px; */
+    border-radius: 5px;
+    margin: 5px;
+    margin-left: 12px;
+
+
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}

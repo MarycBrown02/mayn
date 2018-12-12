@@ -1,3 +1,9 @@
+var state = {
+    favorites: [],
+    meals: {},
+    currentMeal: null
+};
+
 $(() => {
 
 
@@ -131,8 +137,8 @@ function itemClick() {
             $("#ingredient").append("<hr>");
 
 
-            $("#grocery").on("click", function (){
-                
+            $("#grocery").on("click", function () {
+
             })
 
         }
@@ -140,43 +146,80 @@ function itemClick() {
 
 }
 
-
-$("#fav").on("click", () => {
+function showFavorites() {
     $("#favRecipe").empty();
 
     $.ajax("/api/getFavorites", {
         type: "GET"
     }).then(
         function (result) {
+            state.favorites = result;
+
             for (i = 0; i < result.length; i++) {
-                var img = $("<img>");
-                img.attr("src", result[i].img);
-                $("#favRecipe").append(img);
+                // var img = $("<img>");
+                // img.attr("src", result[i].img);
+                // $("#favRecipe").append(img);
 
-                var name = $("<p>");
-                name.addClass("favName");
-                name.text(result[i].name)
-                $("#favRecipe").append(name);
+                // var name = $("<p>");
+                // name.addClass("favName");
+                // name.text(result[i].name)
+                // $("#favRecipe").append(name);
 
+
+                // var viewButton = $("<button>");
+                // viewButton.addClass("viewbutton");
+                // viewButton.text("View Recipe");
+                // viewButton.attr("onClick", "window.open('" + result[1].recipelink + "', 'recipe');");
+                // $("#favRecipe").append(viewButton);
+                // // $("#favRecipe").append("<br>");
+
+                var div = $("<div>");
+                
+                var img= $("<img>");
                 var viewButton = $("<button>");
+                var addMeal = $("<button>");
+                div.addClass("divide");
+                addMeal.addClass("addMeal");
+                addMeal.text("Add To Meal Plan");
+                addMeal.attr("data-recipeId", result[i].recipeId);
+               
+                img.attr("src", result[i].img);
+                
                 viewButton.addClass("viewbutton");
                 viewButton.text("View Recipe");
                 viewButton.attr("onClick", "window.open('" + result[1].recipelink + "', 'recipe');");
-                $("#favRecipe").append(viewButton);
-                $("#favRecipe").append("<br>");
+              
+                div.append(img);
+                div.append($("<p>").text(result[i].name));
+                div.append(img, viewButton, addMeal);
+                $("#favRecipe").append(div);
 
-            
 
-                var addMeal = $("<button>");
-                addMeal.addClass("addmeal");
-                addMeal.text("Add To Meal Plan");
-                $("#favRecipe").append(addMeal);
-                $("#favRecipe").append("<br>");
-                $("#favRecipe").append("<br>", "<hr>");
+
+
+                //debugger;
+                // var total = $("<p>");
+                // total.addClass("totalTime");
+                // var test = result[i].totalTime;
+                // total.text(result[i].totalTime);
+                // $("#favRecipe").append(total);
+
+
+                // var addMeal = $("<button>");
+                // addMeal.addClass("addMeal");
+                // addMeal.text("Add To Meal Plan");
+                // addMeal.attr("data-recipeId", result[i].recipeId);
+                // $("#favRecipe").append(addMeal);
+                // $("#favRecipe").append("<br>");
+                // $("#favRecipe").append("<br>", "<hr>");
+        
             }
         }
     );
-})
+}
+
+
+$("#fav").on("click", showFavorites)
 
 
 
@@ -191,6 +234,9 @@ function favClick() {
         img: $(this).attr("data-img")
     };
 
+    // add to the state variable the meal plan is using
+    state.favorites.push(newFav);
+
 
     $.ajax("/api/addFavorite", {
         type: "POST",
@@ -198,18 +244,119 @@ function favClick() {
     }).then(
         function () {
             console.log("created new favorite");
-
-            //   location.reload();
         }
     );
 
 }
 
-$(document).on("click", ".btn", function(){
-    var id = $(this).attr("id");
-    // alert(id);
-    var spn = "#" + id + "_span";
-    // alert(spn);
-    // $(spn).text("hey");
+// handler for view meal plan
+$("#mealPlan").on("click", showMealPlan);
+
+function showMealPlan() {
+    console.log("showing meal plan")
+    $.ajax("/api/getMeals", {
+        type: "GET"
+    }).then(
+        function (result) {
+            console.log(result);
+            state.meals = result[0];
+            showMeals();
+        });
+}
+
+function showMeals() {
+    for (j = 1; j <= 7; j++) {
+        var propBreak = "day" + j + "_b";
+        var propLunch = "day" + j + "_l";
+        var propDinner = "day" + j + "_d";
+
+        addMealToUi("#" + propBreak + "_p", state.meals[propBreak]);
+        addMealToUi("#" + propLunch + "_p", state.meals[propLunch]);
+        addMealToUi("#" + propDinner + "_p", state.meals[propDinner]);
+    }
+}
+
+function addMealToUi(mealId, recipeId) {
+    console.log("adding meal: " + mealId + ", " + recipeId);
+    if(recipeId == null || recipeId.length < 1) {
+        return;
+    }
+
+    $(mealId).attr("data-recipeId", recipeId);
+    var fav = getFavorite(recipeId);
+    $(mealId).text(fav.name);
+}
+
+// handler for adding to the meal plan when button clicked in fav list
+$(document).on("click", ".addMeal", function () {
+    console.log("adding meal to plan");
+    if (!state.currentMeal) {
+        alert("select a meal from the meal plan to add to first");
+    } else {
+        var recipeId = $(this).attr("data-recipeId");
+        var mealId = state.currentMeal;
+
+        addMealToUi(mealId, recipeId);
+
+        var meals = getMealsFromUi();
+
+        $.ajax("/api/updateMeals", {
+            type: "POST",
+            data: meals
+        }).then(
+            function () {
+                console.log("csaved meals");
+            }
+        );
+    }
 });
+
+function getFavorite(recipeId) {
+    var fav = null;
+
+    for (i = 0; i < state.favorites.length; i++) {
+        if (state.favorites[i].recipeId === recipeId) {
+            fav = state.favorites[i];
+            break;
+        }
+    }
+
+    return fav;
+}
+
+// handler for clicking a button in the meal plan
+$(document).on("click", ".btn-danger", function () {
+    var id = $(this).attr("id");
+    var tag = "#" + id + "_p";
+    state.currentMeal = tag;
+    console.log("currentMeal=" + tag);
+});
+
+// handler for viewing a recipe when the name is clicked in the meal plan.
+$(document).on("click", ".meal", function () {
+    var fav = getFavorite($(this).attr("data-recipeId"));
+    window.open(fav.recipelink, "recipe");
+});
+
+
+
+function getMealsFromUi() {
+    var meals = {};
+
+    for (i = 1; i <= 7; i++) {
+        var tagBreak = "#day" + i + "_b_p";
+        var tagLunch = "#day" + i + "_l_p";
+        var tagDinner = "#day" + i + "_d_p";
+
+        var propBreak = "day" + i + "_b";
+        var propLunch = "day" + i + "_l";
+        var propDinner = "day" + i + "_d";
+
+        meals[propBreak] = $(tagBreak).attr("data-recipeId");
+        meals[propLunch] = $(tagLunch).attr("data-recipeId");
+        meals[propDinner] = $(tagDinner).attr("data-recipeId");
+    }
+
+    return meals;
+}
 
