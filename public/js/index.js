@@ -81,7 +81,7 @@ $("#search").on("click", () => {
 
                 $("#recipeSearch").append(p);
 
-                $("#recipeSearch").append(response.matches[i].ingredients + "<br>");
+                // $("#recipeSearch").append(response.matches[i].ingredients + "<br>");
 
             }
         }
@@ -98,7 +98,7 @@ function itemClick() {
         method: "GET",
         async: false,
         success: (response) => {
-            $("#ingredient").empty();
+            // $("#ingredient").empty();
             var p = $("<p>");
             p.addClass("ingName");
             p.text(response.name);
@@ -109,6 +109,8 @@ function itemClick() {
             for (i = 0; i < response.ingredientLines.length; i++) {
 
                 $("#ingredient").append(response.ingredientLines[i] + "<br>");
+                $("#moreRecipe").append(response.ingredientLines[i] + "<br>");
+                $("#moreRecipe").append(response.ingredientLines[i] + "<br>");
 
             }
 
@@ -127,6 +129,11 @@ function itemClick() {
             favButton.text("Favorite Recipe");
             $("#ingredient").append(favButton);
             $("#ingredient").append("<hr>");
+
+
+            $("#grocery").on("click", function (){
+                
+            })
 
         }
     })
@@ -200,8 +207,9 @@ function favClick() {
 
 $(document).on("click", ".btn", function(){
     var id = $(this).attr("id");
-    alert(id);
+    // alert(id);
     var spn = "#" + id + "_span";
-    alert(spn);
-    $(spn).text("hey");
+    // alert(spn);
+    // $(spn).text("hey");
 });
+
