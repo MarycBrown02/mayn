@@ -199,7 +199,7 @@ function favClick() {
 }
 
 $(document).on("click", ".btn", function(){
-    var id = $(this).text;
+    var id = $(this).attr("id");
     alert(id);
     var spn = "#" + id + "_span";
     alert(spn);
