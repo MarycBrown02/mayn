@@ -1,3 +1,4 @@
+
 var express = require("express");
 var app = express();
 var passport = require("passport");
@@ -13,18 +14,22 @@ var PORT = process.env.PORT || 3000;
 
 SALT_WORK_FACTOR = 12;
 
+
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 // set the static directory for css, images, and js files to be served
 app.use(express.static("public"));
 
 // For Passport
 //app.use(cookieParser);
+
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+
 
 //For Handlebars
 app.set("views", "./app/views")
@@ -61,3 +66,4 @@ app.listen(PORT, function (err) {
         console.log("Site is live"); else console.log(err);
 
 });
+

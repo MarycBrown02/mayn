@@ -1,3 +1,4 @@
+
 var bcrypt = require("bcrypt-nodejs");
 
 
@@ -55,6 +56,7 @@ module.exports = function (sequelize, Sequelize) {
                 console.log("new: " + user.password);
             }
         });
+
     });
 
     return User;

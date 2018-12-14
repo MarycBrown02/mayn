@@ -10,6 +10,3 @@ CREATE DATABASE exampledb;
 
 -- DROP DATABASE IF EXISTS bitchesdb;
 -- CREATE DATABASE bitchesdb;
-
-
-
