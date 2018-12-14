@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
 
@@ -19,7 +22,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">MAYNBDISH!</a>
+        <a class="navbar-brand" href="#"><img src="images/mayndishlogo6.png" id="size"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,8 +32,8 @@
 
 
             <div class="dropdown">
-                <button type="button" id="signIn" class="btn btn-outline-primary">Sign In</button>
-                <button type="button" id="register" class="btn btn-outline-primary">Register</button>
+                <button type="button" id="signIn" class="btn btn-outline-danger">Sign In</button>
+                <button type="button" id="register" class="btn btn-outline-danger">Register</button>
 
             </div>
 
@@ -40,6 +43,9 @@
 
     <div class="box">
         <h2>Login</h2>
+        <div id="invalidLog" class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+        </div>
         <form id="login">
             <div class="inputBox">
                 <input id="userName" type="text" name="user" required minlength="5">
@@ -49,7 +55,7 @@
                 <input id="userPassword" type="password" maxlength="12" name="password" required minlength="5">
                 <label>Password</label>
             </div>
-            <!-- <input id="logButton" type="submit" value=SUBMIT> -->
+
             <button id="logButton" type="button" class="btn btn-primary">Log In</button>
         </form>
     </div>
@@ -83,9 +89,10 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <h5 class="card-title">blach blach</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 id="dishWelcome" class="card-title">★彡 𝑀𝒜𝒴𝒩 𝒟𝐼𝒮𝐻 彡★</h5>
+                        <p class="card-text"><span>𝑀𝒜𝒴𝒩 𝒟𝐼𝒮𝐻 </span> is your smart cooking sidekick, offering
+                            personalized guidance every step away. <span>𝑀𝒜𝒴𝒩 𝒟𝐼𝒮𝐻</span> has everything you
+                            need to improve your life in the kithcen.</p>
 
                     </div>
                 </div>
@@ -98,116 +105,106 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/slow-cooker-vegetable-soup-DSC_1395-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Slow Cooker Vegetable Soup
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/twix_brownies.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Twix Brownies </h3>
+
+
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgBx">
+                    <img src="images/BBQ-Ranch-Cobb-Salad-Recipe-2-IMG_1136-334x425.jpg" alt="placeholder image" />
+                </div>
+                <div class="details">
+                    <h3>BBQ Ranch Cobb Salad
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/beef-bourguignon-recipe_DSC3310-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Bourguignon
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/broccoli-cheese-casserole-DSC_1045-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Broccoli CHeese Caserole
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/buffalo-chicken-enchiladas-recipe-DSC_0407-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Buffalo CHicken Enchiladas
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/easy-tortellini-pasta-salad-recipe-addapinch-0969-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Easy Tortellini Pasta Salad
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/grilled-chicken-peach-balsamic-salad_DSC0258-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Grilled CHicken Peach Balsamic Salad
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/herb-crusted-salmon-in-foil-recipe_DSC3860-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3>Herb Crusted Salmon in Foil
+
                     </h3>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
+                    <img src="images/smoked-brisket-2-334x425.jpg" alt="placeholder image" />
                 </div>
                 <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
-                    </h3>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="imgBx">
-                    <img src="http://dummyimage.com/300x250/fff/00ffd5.png" alt="placeholder image" />
-                </div>
-                <div class="details">
-                    <h3>NAME
-                        <br>
-                        <span>RECIPE</span>
+                    <h3> Smoked Brisket
+
                     </h3>
                 </div>
             </div>
         </div>
-        <!-- Add Pagination -->
+        <!-- Add Pagination s-->
         <div class="swiper-pagination"></div>
     </div>
 
@@ -252,6 +249,10 @@
 
         });
 
+        $(document).ready(function () {
+            $("#invalidLog").hide();
+        });
+
 
 
 
@@ -277,9 +278,12 @@
                     if (response.success) {
                         location.href = "/meal";
                     } else {
-                        // show response.failureMessage
-                        // clear input
-                        alert(response.failureMessage);
+                        // TODO: show response.failureMessage nicely
+                        // TODO: clear input
+                        $("#invalidLog").text(response.failureMessage);
+                        $("#userName").val("");
+                    $("#userPassword").val("");
+                        $("#invalidLog").show();
                     }
 
                     //location.reload();
@@ -329,11 +333,14 @@
                     if (response.success) {
                         location.href = "/meal";
                     } else {
-                        alert(response.failureMessage);
+                        $("#invalid").text(response.failureMessage);
+                        $("#password").val("");
+                        $("#retype").val("");
+                        $("#invalid").show();
                     }
                     //location.reload();
                 }
-            ).fail(function() {
+            ).fail(function () {
                 alert("fail");
             });
         });

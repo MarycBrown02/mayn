@@ -22,11 +22,26 @@ $(() => {
 
     });
 
-    $("#game").on("click", () => {
-        alert("geex");
-    });
+    // $("#game").on("click", () => {
+    //     alert("geex");
+    // });
 });
 
+jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
+
+
+
+$("#closeSearch").on("click", function () {
+    $("#rise").hide();
+});
+
+$(".fas").on("click", function () {
+    $("#rise").show();
+})
 
 $("#bone").on("click", () => {
 
@@ -60,7 +75,7 @@ function logout() {
 };
 
 $("#search").on("click", () => {
-    $("#nene").hide();
+    $("#mealPlanHide").hide();
     var term = $("#searchTerm").val().trim();
     var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=bf960ba7&_app_key=ceae6e226000faadd006d0088b7aff71&q=" + term;
 
@@ -73,6 +88,8 @@ $("#search").on("click", () => {
             $("#ingredient").empty();
             for (i = 0; i < response.matches.length; i++) {
 
+                var div = $("<div>");
+                div.addClass("swiper");
                 var img = $("<img>");
                 img.attr("src", response.matches[i].smallImageUrls[0]);
                 $("#recipeSearch").append(img);
@@ -84,8 +101,9 @@ $("#search").on("click", () => {
                 p.attr("data-id", response.matches[i].id);
 
                 p.text(response.matches[i].recipeName);
+                div.append(img, p);
 
-                $("#recipeSearch").append(p);
+                $("#recipeSearch").append(div);
 
                 // $("#recipeSearch").append(response.matches[i].ingredients + "<br>");
 
@@ -97,14 +115,29 @@ $("#search").on("click", () => {
 $(document).on("click", ".dishName", itemClick);
 function itemClick() {
     var id = ($(this).attr("data-id"));
+    console.log("showing item: " + id);
     var queryURL = "http://api.yummly.com/v1/api/recipe/" + id + "?_app_id=bf960ba7&_app_key=ceae6e226000faadd006d0088b7aff71";
-
+    console.log("Getting: " + id);
     $.ajax({
         url: queryURL,
         method: "GET",
         async: false,
+        error: function(data,status,err){
+            $("#ingredient").empty();
+
+            var pMessage = $("<p>");
+            pMessage.text("Service Temporary Unavailable. Try Again Later");
+            $("#ingredient").append(pMessage);
+
+            var pError = $("<p>");
+            pError.text(err);
+            $("#ingredient").append(pError);
+        },
         success: (response) => {
-            // $("#ingredient").empty();
+            console.log("rendering: " + id);
+            $("#ingredient").empty();
+
+            // display recipe name
             var p = $("<p>");
             p.addClass("ingName");
             p.text(response.name);
@@ -112,43 +145,47 @@ function itemClick() {
             p.css("font-family", "fantasy");
             $("#ingredient").append(p);
 
+
+            // display total time
+            var p2 = $("<p>");
+            p2.addClass("totalTime");
+            p2.text("Total Time: " + response.totalTime);
+            // p.css("color", "red");
+            // p.css("font-family", "fantasy");
+            $("#ingredient").append(p2);
+
+            // show ingredients
             for (i = 0; i < response.ingredientLines.length; i++) {
-
                 $("#ingredient").append(response.ingredientLines[i] + "<br>");
-                $("#moreRecipe").append(response.ingredientLines[i] + "<br>");
-                $("#moreRecipe").append(response.ingredientLines[i] + "<br>");
-
             }
 
+            // add the view button
             var viewButton = $("<button>");
             viewButton.addClass("viewbutton");
             viewButton.text("View Recipe");
             viewButton.attr("onClick", "window.open('" + response.source.sourceRecipeUrl + "', 'recipe');");
             $("#ingredient").append(viewButton);
 
-            var favButton = $("<button>");
-            favButton.addClass("favRecipe");
-            favButton.attr("data-name", response.name);
-            favButton.attr("data-id", response.id);
-            favButton.attr("data-link", response.source.sourceRecipeUrl);
-            favButton.attr("data-img", response.images[0].imageUrlsBySize["90"]);
-            favButton.text("Favorite Recipe");
-            $("#ingredient").append(favButton);
-            $("#ingredient").append("<hr>");
-
-
-            $("#grocery").on("click", function () {
-
-            })
-
+            var fav = getFavorite(response.id);
+            if (fav == null) {
+                // add the fav button
+                var favButton = $("<button>");
+                favButton.addClass("favRecipe");
+                favButton.attr("data-name", response.name);
+                favButton.attr("data-id", response.id);
+                favButton.attr("data-link", response.source.sourceRecipeUrl);
+                favButton.attr("data-img", response.images[0].imageUrlsBySize["90"]);
+                favButton.attr("data-totalTime", response.totalTime);
+                favButton.text("Favorite Recipe");
+                $("#ingredient").append(favButton);
+                $("#ingredient").append("<hr>");
+            }
         }
     })
 
 }
 
-function showFavorites() {
-    $("#favRecipe").empty();
-
+function loadFavorites() {
     $.ajax("/api/getFavorites", {
         type: "GET"
     }).then(
@@ -156,70 +193,47 @@ function showFavorites() {
             state.favorites = result;
 
             for (i = 0; i < result.length; i++) {
-                // var img = $("<img>");
-                // img.attr("src", result[i].img);
-                // $("#favRecipe").append(img);
-
-                // var name = $("<p>");
-                // name.addClass("favName");
-                // name.text(result[i].name)
-                // $("#favRecipe").append(name);
-
-
-                // var viewButton = $("<button>");
-                // viewButton.addClass("viewbutton");
-                // viewButton.text("View Recipe");
-                // viewButton.attr("onClick", "window.open('" + result[1].recipelink + "', 'recipe');");
-                // $("#favRecipe").append(viewButton);
-                // // $("#favRecipe").append("<br>");
-
                 var div = $("<div>");
-                
-                var img= $("<img>");
+
+                var img = $("<img>");
                 var viewButton = $("<button>");
                 var addMeal = $("<button>");
                 div.addClass("divide");
                 addMeal.addClass("addMeal");
                 addMeal.text("Add To Meal Plan");
                 addMeal.attr("data-recipeId", result[i].recipeId);
-               
+
                 img.attr("src", result[i].img);
-                
+
                 viewButton.addClass("viewbutton");
                 viewButton.text("View Recipe");
-                viewButton.attr("onClick", "window.open('" + result[1].recipelink + "', 'recipe');");
-              
+                viewButton.attr("onClick", "window.open('" + result[i].recipelink + "', 'recipe');");
+
                 div.append(img);
                 div.append($("<p>").text(result[i].name));
                 div.append(img, viewButton, addMeal);
-                $("#favRecipe").append(div);
+                $("#favRecipeDiv").append(div);
 
-
-
-
-                //debugger;
-                // var total = $("<p>");
-                // total.addClass("totalTime");
-                // var test = result[i].totalTime;
-                // total.text(result[i].totalTime);
-                // $("#favRecipe").append(total);
-
-
-                // var addMeal = $("<button>");
-                // addMeal.addClass("addMeal");
-                // addMeal.text("Add To Meal Plan");
-                // addMeal.attr("data-recipeId", result[i].recipeId);
-                // $("#favRecipe").append(addMeal);
-                // $("#favRecipe").append("<br>");
-                // $("#favRecipe").append("<br>", "<hr>");
-        
             }
         }
     );
 }
 
+function showFavorites() {
+    if ($("#favRecipeDiv").is(":visible")) {
+        $("#favRecipeDiv").hide();
+        $("#favBtn").text("Show Favorite Recipes");
+    } else {
+        $("#favRecipeDiv").empty();
+        $("#favRecipeDiv").show();
+        $("#favBtn").text("Hide Favorite Recipes");
 
-$("#fav").on("click", showFavorites)
+        loadFavorites();
+    }
+}
+
+
+$("#favBtn").on("click", showFavorites)
 
 
 
@@ -231,7 +245,8 @@ function favClick() {
         recipeId: $(this).attr("data-id"),
         name: $(this).attr("data-name"),
         recipelink: $(this).attr("data-link"),
-        img: $(this).attr("data-img")
+        img: $(this).attr("data-img"),
+        totalTime: $(this).attr("data-totalTime")
     };
 
     // add to the state variable the meal plan is using
@@ -250,18 +265,25 @@ function favClick() {
 }
 
 // handler for view meal plan
-$("#mealPlan").on("click", showMealPlan);
+$("#mealPlanBtn").on("click", showMealPlan);
 
 function showMealPlan() {
-    console.log("showing meal plan")
-    $.ajax("/api/getMeals", {
-        type: "GET"
-    }).then(
-        function (result) {
-            console.log(result);
-            state.meals = result[0];
-            showMeals();
-        });
+    if ($("#mealPlanDiv").is(":visible")) {
+        $("#mealPlanDiv").hide();
+        $("#mealPlanBtn").text("Show Meal Plan");
+    } else {
+        console.log("showing meal plan");
+        $.ajax("/api/getMeals", {
+            type: "GET"
+        }).then(
+            function (result) {
+                console.log(result);
+                state.meals = result[0];
+                showMeals();
+                $("#mealPlanDiv").show();
+                $("#mealPlanBtn").text("Hide Meal Plan");
+            });
+    }
 }
 
 function showMeals() {
@@ -278,7 +300,7 @@ function showMeals() {
 
 function addMealToUi(mealId, recipeId) {
     console.log("adding meal: " + mealId + ", " + recipeId);
-    if(recipeId == null || recipeId.length < 1) {
+    if (recipeId == null || recipeId.length < 1) {
         return;
     }
 
@@ -298,17 +320,42 @@ $(document).on("click", ".addMeal", function () {
 
         addMealToUi(mealId, recipeId);
 
-        var meals = getMealsFromUi();
-
-        $.ajax("/api/updateMeals", {
-            type: "POST",
-            data: meals
-        }).then(
-            function () {
-                console.log("csaved meals");
-            }
-        );
+        saveMealPlan();
     }
+});
+
+function saveMealPlan() {
+    var meals = getMealsFromUi();
+
+    $.ajax("/api/updateMeals", {
+        type: "POST",
+        data: meals
+    }).then(
+        function () {
+            console.log("csaved meals");
+        }
+    );
+}
+
+$(document).on("click", ".btn-warning", function () {
+    // get the id of the button clicked
+    var day = $(this).attr("id");
+
+    // use that id to build the id string of the p tags
+    var b_p = "#" + day + "_b_p";
+    $(b_p).text("");
+    $(b_p).attr("data-recipeId", "");
+
+    var l_p = "#" + day + "_l_p";
+    $(l_p).text("");
+    $(l_p).attr("data-recipeId", "");
+
+    var d_p = "#" + day + "_d_p";
+    $(d_p).text("");
+    $(d_p).attr("data-recipeId", "");
+
+    // save the meal plan
+    saveMealPlan();
 });
 
 function getFavorite(recipeId) {
@@ -336,6 +383,12 @@ $(document).on("click", ".btn-danger", function () {
 $(document).on("click", ".meal", function () {
     var fav = getFavorite($(this).attr("data-recipeId"));
     window.open(fav.recipelink, "recipe");
+});
+
+$(document).ready(function () {
+    $("#mealPlanDiv").hide();
+    $("#favRecipeDiv").hide();
+    loadFavorites();
 });
 
 
