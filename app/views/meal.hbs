@@ -8,6 +8,7 @@
     <title>after</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
@@ -31,11 +32,11 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="http://dummyimage.com/100x100/000/00ffd5.png" alt="placeholder image" />
+            <img src="images/mayndishlogo6.png" id="size" alt="placeholder image" />
         </div>
         <ul>
             <li>
-                <a href="../public/meal.html" class="active">HOME</a>
+                <a href="meal.html" class="active">HOME</a>
             </li>
 
 
@@ -53,9 +54,9 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Welcome <span>{{name}}</span></h5>
+                    <h5 class="card-title">╰☆☆ 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 ☆☆╮ <span>{{name}}</span></h5>
 
-                 
+
                     <div class="col">
                         <div id="search-box">
                             <input id="searchTerm" class="search-text" type="text" name="" placeholder="Search Recipe Here">
@@ -64,11 +65,11 @@
                     </div>
                     <br>
                     <div class="col">
-                       <button id="fav" type="button" class="btn btn-primary">View Favorite Recipe</button>
+                        <button id="favBtn" type="button" class="btn btn-primary">Show Favorite Recipes</button>
                     </div>
                     <br>
                     <div class="col">
-                       <button id="mealPlan" type="button" class="btn btn-primary">View Meal Plan</button>
+                        <button id="mealPlanBtn" type="button" class="btn btn-primary">Show Meal Plan</button>
                     </div>
 
                 </div>
@@ -85,7 +86,7 @@
     <div class="card">
         <div class="card-body">
             <div id="profile">
-                <div id="nene" class="row">
+                <div id="mealPlanDiv" class="row">
 
                     <div class="col">
 
@@ -105,76 +106,106 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">
+
                                         <p class="meal" id="day1_b_p" data-recipeId=""></p><br>
-                                        <button id="day1_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day1_l_p"  data-recipeId=""></p><br>
+                                        <button id="day1_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+
+                                        <p class="meal" id="day1_l_p" data-recipeId=""></p><br>
                                         <button id="day1_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day1_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day1_d_p" data-recipeId=""></p><br>
                                         <button id="day1_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day1" type="button" class="btn btn-warning">Empty</button>
                                     </th>
                                     <th scope="row">
-                                        <p class="meal" id="day2_b_p"  data-recipeId=""></p><br>
-                                        <button id="day2_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day2_l_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day2_b_p" data-recipeId=""></p><br>
+                                        <button id="day2_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+
+                                        <p class="meal" id="day2_l_p" data-recipeId=""></p><br>
                                         <button id="day2_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day2_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day2_d_p" data-recipeId=""></p><br>
                                         <button id="day2_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day2" type="button" class="btn btn-warning">Empty</button>
                                     </th>
                                     <th scope="row">
-                                        <p class="meal" id="day3_b_p"  data-recipeId=""></p><br>
-                                        <button id="day3_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day3_l_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day3_b_p" data-recipeId=""></p><br>
+                                        <button id="day3_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+                                        <p class="meal" id="day3_l_p" data-recipeId=""></p><br>
                                         <button id="day3_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day3_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day3_d_p" data-recipeId=""></p><br>
                                         <button id="day3_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day3" type="button" class="btn btn-warning">Empty</button>
                                     </th>
                                     <th scope="row">
-                                        <p class="meal" id="day4_b_p"  data-recipeId=""></p><br>
-                                        <button id="day4_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day4_l_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day4_b_p" data-recipeId=""></p><br>
+                                        <button id="day4_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+                                        <p class="meal" id="day4_l_p" data-recipeId=""></p><br>
                                         <button id="day4_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day4_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day4_d_p" data-recipeId=""></p><br>
                                         <button id="day4_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day4" type="button" class="btn btn-warning">Empty</button>
                                     </th>
                                     <th scope="row">
-                                        <p class="meal" id="day5_b_p"  data-recipeId=""></p><br>
-                                        <button id="day5_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day5_l_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day5_b_p" data-recipeId=""></p><br>
+                                        <button id="day5_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+                                        <p class="meal" id="day5_l_p" data-recipeId=""></p><br>
                                         <button id="day5_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day5_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day5_d_p" data-recipeId=""></p><br>
                                         <button id="day5_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day5" type="button" class="btn btn-warning">Empty</button>
                                     </th>
                                     <th scope="row">
-                                        <p class="meal" id="day6_b_p"  data-recipeId=""></p><br>
-                                        <button id="day6_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day6_l_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day6_b_p" data-recipeId=""></p><br>
+                                        <button id="day6_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+                                        <p class="meal" id="day6_l_p" data-recipeId=""></p><br>
                                         <button id="day6_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day6_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day6_d_p" data-recipeId=""></p><br>
                                         <button id="day6_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day6" type="button" class="btn btn-warning">Empty</button>
                                     </th>
                                     <th scope="row">
-                                        <p class="meal" id="day7_b_p"  data-recipeId=""></p><br>
-                                        <button id="day7_b" type="button" class="btn btn-danger">Breakfast</button><br><br>
-                                        <p class="meal" id="day7_l_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day7_b_p" data-recipeId=""></p><br>
+                                        <button id="day7_b" type="button" class="btn btn-danger">Breakfast</button>
+
+
+                                        <p class="meal" id="day7_l_p" data-recipeId=""></p><br>
                                         <button id="day7_l" type="button" class="btn btn-danger">lunch</button><br><br>
-                                        <p class="meal" id="day7_d_p"  data-recipeId=""></p><br>
+
+                                        <p class="meal" id="day7_d_p" data-recipeId=""></p><br>
                                         <button id="day7_d" type="button" class="btn btn-danger">dinner</button><br><br>
 
-                                        <button type="button" class="btn btn-warning">Empty</button>
+                                        <button id="day7" type="button" class="btn btn-warning">Empty</button>
                                     </th>
-                                   
+
                             </tbody>
                         </table>
                     </div>
@@ -186,13 +217,21 @@
                     <br>
                 </div>
 
+                <button id="closeSearch" type="button" class="btn btn-info">close</button>
 
                 <div id="rise" class="row">
-                    {{!-- <button type="button" class="btn btn-info">close</button> --}}
-                    <div id="recipeSearch" class="col-6">
+
+                    {{!-- <div id="recipeSearch" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+
+                    </div> --}}
+
+                     <div id="recipeSearch" class="col-9">
 
                     </div>
-                    <div id="ingredient" class="col-6">
+
+
+
+                    <div id="ingredient" class="col-3">
 
                     </div>
                 </div>
@@ -200,27 +239,13 @@
             </div>
             <br>
 
-      
-            <div class="row">
-                <div class="col">
-                    <h2>Grocery List</h2>
-
-                    <button id="grocery" type="button" class="btn btn-primary">View Grocery List</button>
-
-
-                    <div id="moreRecipe" class="card">
-
-                    </div>
-
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col">
                     <h2>Favorite Recipe</h2>
 
 
-                    <div id="favRecipe"></div>
+                    <div id="favRecipeDiv"></div>
 
                 </div>
             </div>
@@ -232,6 +257,25 @@
 
 
     <script src="js/index.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
 
 </body>
 

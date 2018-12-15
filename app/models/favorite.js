@@ -5,8 +5,8 @@ module.exports = function (sequelize, Sequelize) {
         recipeId: { type: Sequelize.STRING, notEmpty: true },
         name: { type: Sequelize.STRING, notEmpty: true },
         recipelink: { type: Sequelize.STRING, notEmpty: true},
-        img: { type: Sequelize.STRING, allowNull: false }
-        
+        img: { type: Sequelize.STRING, allowNull: false },
+        totalTime: { type: Sequelize.STRING, allowNull: false }
 
     });
 

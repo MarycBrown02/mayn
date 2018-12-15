@@ -2,17 +2,19 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-image: url("../images/duh\ .png");
+    background-image: url("../images/pizza_ingredients_background-1.png");
 
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 
    
 }
 /*#region slide*/
 .details h3{
-    color: #9BD788;
+    color: #93DD0E;
     text-align: center;
+    font-family: 'Oleo Script', cursive;
 }
 .navbar-brand {
     border: 1px color black;
@@ -27,12 +29,39 @@ body {
 
 .card {
     text-align: center;
-    background: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0.4);
+    /* background-color: #BBEFAB; */
     color: #fff;
     border: none;
     font-weight: bold;
-    margin: 200px auto;
+    /* margin: 200px auto; */
+    margin-top: 102px;
    
+}
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
+#dishWelcome {
+    font-family: 'Abril Fatface', cursive;
+    color: #FFFF6B;
+    font-size: 5rem;
+}
+span {
+    font-family: 'Abril Fatface', cursive;
+    color: #FFFF6B;
+}
+
+.card-text {
+    font-family: 'Courgette', cursive;
+  
+    font-size: 25px;
+}
+
+h3{
+    color: black;
 }
 
    .swiper-container {
@@ -52,6 +81,7 @@ body {
 
         .swiper-slide .imgBx .image{
             width: 100%;
+           
         }
 
 /*#endregion*/
@@ -151,21 +181,11 @@ button {
 }
 
 .wrap {
-    /* background: transparent; */
-    /* max-width: 700px;
-    border-radius: 20px;
-    margin: auto;
-    background-image: url("../images/wood.jpg");
-    background-size: cover;
-    box-sizing: border-box;
-    padding: 40px;
-    color: #fff;
-    margin-top: 100px; */
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* width: 700px; */
     padding: 40px;
     background-image: url("../images/wood.jpg");
     background-size: cover;
@@ -216,4 +236,8 @@ input[type=submit]{
 
 #invalid{
     display: none;
+}
+
+#size {
+    height: 100px;
 }

@@ -10,6 +10,8 @@ var bodyParser = require("body-parser");
 var env = require("dotenv").load();
 var exphbs = require("express-handlebars");
 
+var PORT = process.env.PORT || 3000;
+
 SALT_WORK_FACTOR = 12;
 
 
@@ -59,7 +61,7 @@ models.sequelize.sync().then(function () {
 });
 
 
-app.listen(3000, function (err) {
+app.listen(PORT, function (err) {
     if (!err)
         console.log("Site is live"); else console.log(err);
 

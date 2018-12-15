@@ -2,8 +2,10 @@
 body {
     margin: 0;
     padding: 0;
-    background: url("../images/before-after-kitchens-02.jpg");
+    background: url("../images/chefkoch_in_der_k__che_mit_frischem_gem__se_tomaten_-1.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
     
 }
@@ -92,6 +94,23 @@ nav ul li a:hover {
     text-align: center;
 
 }
+
+.btn{
+    background-color: red;
+    color: white;
+   }
+   .table{
+      border: solid;  
+      
+   }
+   .meal{
+       border: solid;
+       padding: 50px;
+       /* height: 100px; */
+       
+   
+   }
+
 .addRecipe {
    
         position: absolute;
@@ -108,6 +127,7 @@ nav ul li a:hover {
         text-align: center;
     
 }
+
 
 
 
@@ -200,6 +220,7 @@ a {
 p {
     display: block;
    text-align: center;
+  
 }
 
 div.divide {
@@ -218,4 +239,71 @@ div.divide {
 img {
     height: 200px;
     width: 200px;
+    border: 2px solid #93DD0E;
+    border-radius: 30px;
+
+}
+
+
+
+/* table  {
+    border: 2px solid red;
+}
+
+th{
+    border: 2px solid blue;
+}
+
+tr {
+    border: 2px solid green;
+}
+
+.btn {
+    text-align: center;
+} */
+/* 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  } */
+  
+  .red {
+      border: 2px solid blue;
+  }
+
+  .blue {
+      border: 2px solid black;
+  }
+
+  .swiper {
+    float: left;
+    width: 250px;
+    color: blue;
+  }
+
+
+ h5 {
+    font-family: 'Charm', cursive;
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
+ }
+
+ span {
+     color: red;
+     font-size: 40px;
+ }
+
+h2 {
+    font-family: 'Charm', cursive;
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
+}
+
+.card {
+   
+    background: rgba(255, 255, 255, 0.46);
 }
